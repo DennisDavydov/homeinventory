@@ -107,7 +107,7 @@ def delete_product():
 pygame.mixer.init()
 sound = pygame.mixer.Sound('ding.wav')
 root = tk.Tk()
-root.overrideredirect(True)
+#root.overrideredirect(True)
 root.attributes('-topmost', True)
 root.title("Barcode Scanner")
 
@@ -143,7 +143,7 @@ catbox.pack()
 
 labelstore = tk.Label(root, text="Storage")
 labelstore.pack()
-spaces = ['Fridge', 'Freezer', 'Snack cupboard', 'Meal Cupboard', 'Baking Drawer', 'Spice Cabinet']
+spaces = ['Fridge', 'Freezer', 'Snack Cupboard', 'Meal Cupboard', 'Baking Drawer', 'Spice Cabinet']
 storebox = ttk.Combobox(root, values=spaces, state='readonly')
 storebox.pack()
 

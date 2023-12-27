@@ -1,0 +1,38 @@
+<table id="productTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Amount(kg/l)</th>
+            <th>Storage</th>
+            <th>Expiration Date</th>
+            <th>Barcode</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.forEach(product => { %>
+            <% if (product.expiry_date) { %> 
+                <% const difference = (new Date(product.expiry_date) - new Date()) / (1000 * 60 * 60 * 24); %>
+                <% const urgent = 2; %>
+                <% const soon = 7; %>
+                <% product.expiry_date = product.expiry_date.toLocaleDateString() %>
+                
+                <% if (difference <= urgent) { %>
+                    <tr style="background-color: red;">
+                <% } else if (difference <= soon) { %>
+                    <tr style="background-color: yellow;">
+                <% } else { %>
+                    <tr>
+                <% } %>
+            <% } else { %>
+                <% product.expiry_date = "N/A" %>
+                <tr>
+                <% } %>
+                <td><%= product.name %></td>
+                <td><%= product.amount %></td>
+                <td><%= product.storage_place %></td>
+                <td style="font-weight:bold;"><%= product.expiry_type +":"+ product.expiry_date %></td>
+                <td><%= product.barcode %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>

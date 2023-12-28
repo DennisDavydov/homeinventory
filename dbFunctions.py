@@ -13,7 +13,7 @@ def insert_data(data):
     # Sample data to be inserted
     
     # SQL query to insert data into the products table
-    insert_query = "INSERT INTO products (barcode, name, manufacturer, amount, category, storage_place, expiry_type, expiry_date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_query = "INSERT INTO products (barcode, name, manufacturer, amount, category, storage_place, expiry_type, expiry_date, unit) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     # Execute the query to insert data
     
     cursor.execute(insert_query, data)
@@ -21,8 +21,8 @@ def insert_data(data):
     # Commit changes to the database
     connection.commit()
     if not check_database(data[0]):
-        insert_query = "INSERT INTO product_templates (barcode, name, manufacturer, amount, category, storage_place, expiry_type) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        cursor.execute(insert_query, data[0:7])
+        insert_query = "INSERT INTO product_templates (barcode, name, manufacturer, amount, category, storage_place, expiry_type, unit) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(insert_query, data[0:8])
         connection.commit()
     # Close the cursor and connection
     cursor.close()

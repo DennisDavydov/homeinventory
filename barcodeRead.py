@@ -28,6 +28,7 @@ def scan_barcode():
             catbox.set("")
             storebox.set("")
             amount_var.set("")
+            unitbox.set("")
             usebox.set("")
             sound.play()
             
@@ -68,7 +69,8 @@ def pipe_data():
         catbox.get(),
         storebox.get(),
         usebox.get(),
-        date
+        date,
+        unitbox.get()
     ]
     
     print("ok")
@@ -92,6 +94,7 @@ def fill_form(barcode):
     storebox.set(form_data[4])
     amount_var.set(form_data[5])
     usebox.set(form_data[6])
+    unitbox.set(form_data[7])
  
 def delete_product():
     date = date_entry.get()
@@ -128,6 +131,12 @@ labelman.pack()
 man_var = tk.StringVar()
 man_entry = tk.Entry(root, textvariable=man_var)
 man_entry.pack()
+
+labelunit = tk.Label(root, text="Units")
+labelunit.pack()
+units = ['g', 'l', 'p']
+unitbox = ttk.Combobox(root, values=units, state='readonly')
+unitbox.pack()
 
 labelamount = tk.Label(root, text="Amount")
 labelamount.pack()

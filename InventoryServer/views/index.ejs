@@ -5,25 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Table</title>
     <style>
+
+
+	table.dataTable{
+	width: auto !important;
+	margin: 0 auto;
+	font-size: 12px;
+	}
+
         td {
             text-align: center;
+        }
+	.toggle-btn {
+	    border: 3px solid #008CBA;
+	}
+	.toggled {
+	    border-color: #ccc;  
+
         }
     </style>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 </head>
 <body style="background-color:#c7a7d1">
+<div>
+<button id="name" class="toggle-btn" onclick="toggleColumn(this, 0)">Name</button>
+<button id="man" class="toggle-btn" onclick="toggleColumn(this, 1)">Manufacturer</button>
+<button id="cat" class="toggle-btn" onclick="toggleColumn(this, 2)">Category</button>
+<button id="av" class="toggle-btn" onclick="toggleColumn(this, 3)">Available</button>
+<button id="pack" class="toggle-btn" onclick="toggleColumn(this, 4)">Packaging</button>
+<button id="store" class="toggle-btn" onclick="toggleColumn(this, 5)">Storage</button>
+<button id="exp" class="toggle-btn" onclick="toggleColumn(this, 6)">Expires</button>
+<button id="bar" class="toggle-btn" onclick="toggleColumn(this, 7)">Barcode</button>
+<button id="toggleTableBtn" >Expand</button>
+</div>
+<hr>
 
 	<div><%- include('partials/tableTemplate') %></div>
+	<div><%- include('partials/fulltableTemplate') %></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.8/sb-1.6.0/datatables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#productTable').DataTable({
-            paging:false,
-            //dom:'Qfrtip'
+            // Initialize the DataTable
+            var table = $('#productTable').DataTable({
+                paging: true
+            });
+    
+            // Add click event listener to table rows
+            $('#productTable tbody').on('click', 'tr', function() {
+                // Get the data from the clicked row
+                var data = table.row(this).data();
+    
+                // Perform actions based on the clicked row data
+                console.log('Clicked row data:', data);
+    
+                // Example action: Alert the name of the product when clicked
+                alert('Product Name: ' + data[0]); // Assuming the product name is in the first column (index 0)
             });
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            // Initialize the DataTable
+            var table = $('#fullproductTable').DataTable({
+                paging: true
+            });
+            // Add click event listener to table rows
+            $('#fullproductTable tbody').on('click', 'tr', function() {
+                // Get the data from the clicked row
+                var data = table.row(this).data();
+    
+                // Perform actions based on the clicked row data
+                console.log('Clicked row data:', data);
+    
+                // Example action: Alert the name of the product when clicked
+                alert('Product Name: ' + data[0]); // Assuming the product name is in the first column (index 0)
+            });
+        });
+    </script>
+<script>
+  function click(btn) {
+  btn.classList.toggle("toggle-btn")
+  }
+
+  function toggleColumn(btn, columnIndex) {
+    var table = $('#productTable').DataTable();
+    var column = table.column(columnIndex);
+    column.visible(!column.visible());
+    btn.classList.toggle("toggled");
+  }
+</script>
+<script>
+$(document).ready(function() {
+    $('#toggleTableBtn').on('click', function() {
+        var table = $('#fullproductTable');
+
+        // Toggle the visibility of the table
+        table.toggle();
+
+        if (table.is(':visible')) {
+            // If the table is now visible, initialize the DataTable (if not initialized)
+            if (!$.fn.DataTable.isDataTable('#fullproductTable')) {
+                $('#fullproductTable').DataTable({
+                    paging: true,
+                    // Other DataTable options
+                });
+            }
+        } else {
+            // If the table is hidden, destroy the DataTable instance
+            if ($.fn.DataTable.isDataTable('#fullproductTable')) {
+                $('#fullproductTable').DataTable().destroy();
+            }
+        }
+    });
+});
+
+</script>
+<script>
+$(document).ready(function() {
+    $('#toggleTableBtn').on('click', function() {
+        
+        var table = $('#productTable');
+
+        // Toggle the visibility of the table
+        table.toggle();
+
+        if (table.is(':visible')) {
+            // If the table is now visible, initialize the DataTable (if not initialized)
+            if (!$.fn.DataTable.isDataTable('#productTable')) {
+                $('#productTable').DataTable({
+                    paging: true,
+                    // Other DataTable options
+                });
+            }
+        } else {
+            // If the table is hidden, destroy the DataTable instance
+            if ($.fn.DataTable.isDataTable('#productTable')) {
+                $('#productTable').DataTable().destroy();
+            }
+        }
+    });
+        var inittable = $('#fullproductTable');
+
+        // Toggle the visibility of the table
+        inittable.toggle();
+        $('#fullproductTable').DataTable().destroy();
+});
+
+</script>
+<>
 </body>
 </html>

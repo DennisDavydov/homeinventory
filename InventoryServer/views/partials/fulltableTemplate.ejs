@@ -1,18 +1,18 @@
-<table id="productTable">
+<table id="fullproductTable">
     <thead>
         <tr>
+	    <th>ID</th>
             <th>Name</th>
 	    <th>Manufacturer</th>
 	    <th>Category</th>
             <th>Available</th>
-            <th>Packaging</th>
             <th>Storage</th>
             <th>Expires in</th>
             <th>Barcode</th>
         </tr>
     </thead>
     <tbody>
-        <% products.forEach(product => { %>
+        <% fullproducts.forEach(product => { %>
             <% if (product.expiry_date) { %>
 		<% product.expiry_date = product.earliest_expiry_date %> 
                 <% const difference = (new Date(product.expiry_date) - new Date()) / (1000 * 60 * 60 * 24); %>
@@ -40,11 +40,11 @@
                 <% product.expiry_date = "N/A" %>
                 <tr>
                 <% } %>
-                <td><%= product.name %></td>
+                <td><%= product.id %></td>
+		<td><%= product.name %></td>
 		<td><%= product.manufacturer %></td>
 		<td><%= product.category %></td>
-                <td><%= product.total_amount + "" + product.unit %></td>
-                <td><%= product.amount %></td>
+                <td><%= product.amount + "" + product.unit %></td>
                 <td><%= product.storage_place %></td>
                 <td style="font-weight:bold;"><%= product.expiry_date + "" %></td>
                 <td><%= product.barcode %></td>
@@ -52,3 +52,4 @@
         <% }); %>
     </tbody>
 </table>
+

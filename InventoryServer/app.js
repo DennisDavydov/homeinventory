@@ -8,6 +8,8 @@ app.set('view engine', 'ejs');
 
 // Serve static files (like CSS or images)
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
@@ -66,6 +68,26 @@ app.get('/', (req, res) => {
         res.status(500).send('Error fetching data');
     });
 });
+
+
+app.post('/deleteRow', (req, res) => {
+
+    console.log('Received request body:', req.body);
+    const { barcode } = req.body; // Assuming the 'id' is sent in the request body
+    // Construct and execute the SQL query to delete the row
+    const query = `DELETE FROM products WHERE barcode = ${connection.escape(barcode)} order by expiry_date limit 1`; // Replace 'your_table_name' with your actual table name
+
+    connection.query(query, (error, results) => {
+        if (error) {
+            console.error('Error deleting row:', error);
+            res.status(500).send('Error deleting row');
+            return;
+        }
+        console.log('Row deleted successfully');
+        res.status(200).send('Row deleted successfully');
+    });
+});
+
 
 
 function get_data(){

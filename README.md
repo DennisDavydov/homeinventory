@@ -61,10 +61,6 @@ The server should now be running on http://localhost:8080.
 
 If you would like to contribute to this project, feel free to fork the repository and submit pull requests with your changes.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - This project was created with Node.js, Express.js, and MySQL.

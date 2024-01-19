@@ -31,10 +31,10 @@ Before you get started, make sure you have the following prerequisites installed
 
    ```javascript
    const connection = mysql.createConnection({
-       host: 'localhost',
-       user: 'your_mysql_username',
-       password: 'your_mysql_password',
-       database: 'inventory_db' // Change to your database name
+       host: 'hostname',
+       user: 'user',
+       password: 'yourpassword',
+       database: 'databasename' 
    });
    ```
 

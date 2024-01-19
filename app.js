@@ -13,10 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
+    host: '127.0.0.1',
+    user: 'denis',
     password: 'Actimel1234',
-    database: 'inventory_db'
+    database: 'inventory_db',
+    port: 3306
 });
 
 // Connect to the database

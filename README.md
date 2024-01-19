@@ -1,4 +1,3 @@
-Certainly! Here's a README for your GitHub project, including necessary steps to set it up:
 
 # Node.js Inventory Server
 
@@ -16,8 +15,8 @@ Before you get started, make sure you have the following prerequisites installed
 1. Clone this repository to your Linux machine or Raspberry Pi:
 
    ```
-   git clone https://github.com/yourusername/your-inventory-server.git
-   cd your-inventory-server
+   git clone https://github.com/DennisDavydov/homeinvetorypi.git
+   cd homeinventorypi
    ```
 
 2. Install the required Node.js packages by running:
@@ -51,7 +50,7 @@ The server should now be running on http://localhost:8080.
 
 - Access the server in your web browser by navigating to http://localhost:8080.
 - The server provides an interface to manage inventory data.
-- You can add, delete, and view inventory items.
+- You add, delete, and view inventory items.
 
 ## API Endpoints
 
@@ -69,5 +68,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - This project was created with Node.js, Express.js, and MySQL.
-
-Feel free to customize this README to include any additional information or instructions that are specific to your project. Good luck with your Node.js inventory server!

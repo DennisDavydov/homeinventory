@@ -32,18 +32,18 @@ password.
 
 4. After creating the database, run log into Mysql using:
 
----
+```
 mysql -uroot -p
----
+```
 Log into the database:
 
----
+```
 use databasename;
----
+```
 
 Create two tables by running the following query:
 
----
+```
 CREATE TABLE products (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     barcode VARCHAR(50),
@@ -68,7 +68,7 @@ CREATE TABLE product_templates (
     unit VARCHAR(20)
 );
 
----
+```
 
 5. Open the `server.js` file and update the MySQL connection configuration with your database details:
 

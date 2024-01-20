@@ -3,6 +3,8 @@
 
 This is a Node.js inventory server designed to run on a Linux machine or Raspberry Pi. It uses Express.js for the web framework and MySQL as the database.
 
+This is written to work in pair with the [barcode reader](https://github.com/DennisDavydov/barcodeReaderPy), but can be used on its own through the webpage.
+
 ## Prerequisites
 
 Before you get started, make sure you have the following prerequisites installed:

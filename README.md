@@ -70,7 +70,7 @@ CREATE TABLE product_templates (
 
 ```
 
-5. Open the `server.js` file and update the MySQL connection configuration with your database details:
+5. Open the `app.js` file and update the MySQL connection configuration with your database details:
 
    ```javascript
    const connection = mysql.createConnection({
@@ -84,7 +84,7 @@ CREATE TABLE product_templates (
 6. Run the server:
 
    ```
-   node server.js
+   node app.js
    ```
 
 The server should now be running on http://localhost:8080.

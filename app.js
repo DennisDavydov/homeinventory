@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
-const port = 8080;
+const user_config = require('./config.json')
+const port = user_config["app"]["port"]
+const hostname = user_config["app"]["hostname"]
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
@@ -11,14 +13,11 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+console.log("Running with configuration: ")
+console.log(user_config["db"])
+
 // Create a MySQL connection
-const connection = mysql.createConnection({
-    host: 'hostname',
-    user: 'user',
-    password: 'yourpassword',
-    database: 'databasename',
-    port: 3306
-});
+const connection = mysql.createConnection(user_config);
 
 // Connect to the database
 connection.connect((err) => {
@@ -92,10 +91,10 @@ app.post('/deleteRow', (req, res) => {
 
 
 function get_data(){
-	
-	
+
+
 	}
 // Start the server
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on http://${hostname}:${port}`);
 });

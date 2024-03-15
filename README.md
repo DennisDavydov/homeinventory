@@ -70,15 +70,20 @@ CREATE TABLE product_templates (
 
 ```
 
-5. Open the `app.js` file and update the MySQL connection configuration with your database details:
+5. Open the `config.json` file and update the MySQL connection configuration with your database details:
 
-   ```javascript
-   const connection = mysql.createConnection({
-       host: 'hostname',
-       user: 'user',
-       password: 'yourpassword',
-       database: 'databasename' 
-   });
+   ```json
+      "db": {
+       "host": "localhost",
+       "user": "user",
+       "password": "yourpassword",
+       "database": "databasename",
+       "port": 3306
+      },
+      "app": {
+        "port": 8080,
+        "hostname": "localhost"
+      }
    ```
 
 6. Run the server:

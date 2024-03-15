@@ -21,56 +21,7 @@ Before you get started, make sure you have the following prerequisites installed
    cd homeinventorypi
    ```
 
-2. Install the required Node.js packages by running:
-
-   ```
-   npm install
-   ```
-
-3. Create a MySQL database for the server. You can do this using the MySQL command-line tool or a GUI like phpMyAdmin. Make sure to note down the database name, username, and 
-password.
-
-4. After creating the database, run log into Mysql using:
-
-```
-mysql -uroot -p
-```
-Log into the database:
-
-```
-use databasename;
-```
-
-Create two tables by running the following query:
-
-```
-CREATE TABLE products (
-    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    barcode VARCHAR(50),
-    name VARCHAR(100),
-    manufacturer VARCHAR(100),
-    category VARCHAR(100),
-    storage_place VARCHAR(100),
-    amount DECIMAL(10,2),
-    expiry_type VARCHAR(100),
-    expiry_date DATE,
-    unit VARCHAR(20)
-);
-
-CREATE TABLE product_templates (
-    barcode VARCHAR(50) NOT NULL PRIMARY KEY,
-    name VARCHAR(100),
-    manufacturer VARCHAR(100),
-    category VARCHAR(100),
-    storage_place VARCHAR(100),
-    amount DECIMAL(10,2),
-    expiry_type VARCHAR(100),
-    unit VARCHAR(20)
-);
-
-```
-
-5. Open the `config.json` file and update the MySQL connection configuration with your database details:
+2. Open the `config.json` file and update the MySQL connection configuration with your database details:
 
    ```json
       "db": {
@@ -86,7 +37,15 @@ CREATE TABLE product_templates (
       }
    ```
 
-6. Run the server:
+3. Run the `run.sh` script
+
+4. Install the required Node.js packages by running:
+
+   ```
+   npm install
+   ```
+
+5. Run the server:
 
    ```
    node app.js

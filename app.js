@@ -14,10 +14,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 console.log("Running with configuration: ")
-console.log(user_config["db"])
+console.log(user_config)
 
 // Create a MySQL connection
-const connection = mysql.createConnection(user_config);
+const connection = mysql.createConnection(user_config["db"]);
 
 // Connect to the database
 connection.connect((err) => {
